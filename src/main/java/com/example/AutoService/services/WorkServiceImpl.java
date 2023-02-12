@@ -1,6 +1,6 @@
 package com.example.AutoService.services;
 
-import com.example.AutoService.entities.Work_car;
+import com.example.AutoService.entities.WorkCar;
 import com.example.AutoService.repositories.WorkRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,5 +14,5 @@ public class WorkServiceImpl implements WorkService{
     public WorkServiceImpl(WorkRepository workRepository) { this.workRepository = workRepository; }
 
     @Override
-    public List<Work_car> getAllWorks() { return workRepository.findAll(); }
+    public List<WorkCar> getAllWorks() { return workRepository.findAll(); }
 }

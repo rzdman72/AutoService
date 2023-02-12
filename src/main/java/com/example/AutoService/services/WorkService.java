@@ -1,12 +1,11 @@
 package com.example.AutoService.services;
 
-import com.example.AutoService.entities.Client;
-import com.example.AutoService.entities.Work_car;
+import com.example.AutoService.entities.WorkCar;
 
 import java.util.List;
 
 public interface WorkService {
-    List<Work_car> getAllWorks();
+    List<WorkCar> getAllWorks();
 }
 
 
