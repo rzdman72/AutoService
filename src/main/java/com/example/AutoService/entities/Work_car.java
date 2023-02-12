@@ -5,8 +5,8 @@ import java.util.Objects;
 
 @Entity
 //@GeneratedValue(strategy = GenerationType.IDENTITY)
-@Table(name = "work")
-public class Work {
+@Table(name = "work_car")
+public class Work_car {
     @Id
     @Column(name = "id")
     private long id;
@@ -17,7 +17,7 @@ public class Work {
     @Column(name = "client_id")
     private long client_id;
 
-    public Work() {
+    public Work_car() {
     }
 
     public long getId() {
@@ -54,7 +54,7 @@ public class Work {
 
     @Override
     public String toString() {
-        return "Work{" +
+        return "Work_car{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", car_id=" + car_id +
@@ -66,8 +66,8 @@ public class Work {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Work work = (Work) o;
-        return id == work.id && car_id == work.car_id && client_id == work.client_id && Objects.equals(name, work.name);
+        Work_car workCar = (Work_car) o;
+        return id == workCar.id && car_id == workCar.car_id && client_id == workCar.client_id && Objects.equals(name, workCar.name);
     }
 
     @Override
