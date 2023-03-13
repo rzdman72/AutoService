@@ -16,6 +16,15 @@ public class Car {
     public Car() {
     }
 
+    public Car(String brand) {
+        this.brand = brand;
+    }
+
+    public Car(long id, String brand) {
+        this.id = id;
+        this.brand = brand;
+    }
+
     public long getId() {
         return id;
     }

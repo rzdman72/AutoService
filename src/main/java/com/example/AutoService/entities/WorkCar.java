@@ -22,6 +22,22 @@ public class WorkCar {
     public WorkCar() {
     }
 
+    public WorkCar(String name) {
+        this.name = name;
+    }
+
+    public WorkCar(long id, String name, Car car, Client client) {
+        this.id = id;
+        this.name = name;
+        this.car = car;
+        this.client = client;
+    }
+
+    public WorkCar(long id, String name) {
+        this.id = id;
+        this.name = name;
+    }
+
     public WorkCar(String name, Car car, Client client) {
         this.name = name;
         this.car = car;

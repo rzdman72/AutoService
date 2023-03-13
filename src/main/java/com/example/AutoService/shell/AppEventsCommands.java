@@ -1,13 +1,15 @@
 package com.example.AutoService.shell;
 
+import com.example.AutoService.entities.Car;
 import com.example.AutoService.entities.Client;
+import com.example.AutoService.entities.WorkCar;
 import com.example.AutoService.services.CarService;
 import com.example.AutoService.services.ClientService;
 import com.example.AutoService.services.WorkService;
+import org.h2.tools.Console;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.shell.standard.ShellComponent;
 import org.springframework.shell.standard.ShellMethod;
-import org.h2.tools.Console;
 import org.springframework.shell.standard.ShellOption;
 
 import java.sql.SQLException;
@@ -36,6 +38,7 @@ public class AppEventsCommands {
             throw new RuntimeException(e);
         }
     }
+
     @ShellMethod(value = "Get All Clients", key = {"gac", "getallclients"})
     public void getAllClients() {
         System.out.println(clientService.getAllClients().toString());
@@ -79,5 +82,47 @@ public class AppEventsCommands {
             @ShellOption(defaultValue = "1") long id,
             @ShellOption(defaultValue = "Anonymous") String name) {
         clientService.deleteClient(new Client(id, name));
+    }
+
+    @ShellMethod(value = "Create a new Car", key = {"ccar", "createcar"})
+    public String createNewCar(@ShellOption(defaultValue = "none") String brand) {
+        return carService.createCar(new Car(brand)).toString();
+    }
+
+    @ShellMethod(value = "Updating information about the Car", key = {"ucar", "updatecar"})
+    public void updateCar(
+            @ShellOption(defaultValue = "1") long id,
+            @ShellOption(defaultValue = "none") String brand) {
+        carService.updateCar(new Car(id, brand));
+    }
+
+    @ShellMethod(value = "Deleting Car data from the AutoService", key = {"dcar", "deletecar"})
+    public void deleteCar(
+            @ShellOption(defaultValue = "1") long id,
+            @ShellOption(defaultValue = "none") String brand) {
+        carService.deleteCar(new Car(id, brand));
+    }
+
+    @ShellMethod(value = "Create a new WorkCar", key = {"cw", "createworkcar"})
+    public String createNewWorkCar(@ShellOption(defaultValue = "none") String name) {
+        return workService.createWorkCar(new WorkCar(name)).toString();
+    }
+
+    @ShellMethod(value = "Updating information about the WorkCar", key = {"uw", "updateworkcar"})
+    public void updateWorkCar(
+            @ShellOption(defaultValue = "1") long id,
+            @ShellOption(defaultValue = "none") String name,
+            @ShellOption(defaultValue = "1") Car car,
+            @ShellOption(defaultValue = "1") Client client) {
+        workService.updateWorkCar(new WorkCar(id, name, car, client));
+    }
+
+    @ShellMethod(value = "Deleting WorkCar data from the AutoService", key = {"dw", "deletework"})
+    public void deleteWorkCar(
+            @ShellOption(defaultValue = "1") long id,
+            @ShellOption(defaultValue = "none") String name,
+            @ShellOption(defaultValue = "1") Car car,
+            @ShellOption(defaultValue = "1") Client client) {
+        workService.deleteWorkCar(new WorkCar(id, name, car, client));
     }
 }

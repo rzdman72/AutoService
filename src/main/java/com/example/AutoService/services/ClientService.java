@@ -11,6 +11,8 @@ public interface ClientService {
     Optional<Client> getClientById(long id);
 
     Client createClient(Client client);
+
     void updateClient(Client client);
+
     void deleteClient(Client client);
 }

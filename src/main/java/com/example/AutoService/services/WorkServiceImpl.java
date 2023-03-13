@@ -12,6 +12,7 @@ import java.util.Optional;
 @Service
 public class WorkServiceImpl implements WorkService{
     private final WorkRepository workRepository;
+
     @Autowired
     public WorkServiceImpl(WorkRepository workRepository) { this.workRepository = workRepository; }
 
@@ -23,4 +24,18 @@ public class WorkServiceImpl implements WorkService{
     public Optional<WorkCar> getWorkById(long id) {
         return workRepository.findById(id);
     }
+
+    @Override
+    @Transactional
+    public WorkCar createWorkCar(WorkCar workCar) {
+        return workRepository.save(workCar);
+    }
+
+    @Override
+    @Transactional
+    public void updateWorkCar(WorkCar workCar) { workRepository.save(workCar); }
+
+    @Override
+    @Transactional
+    public void deleteWorkCar(WorkCar workCar) { workRepository.delete(workCar); }
 }

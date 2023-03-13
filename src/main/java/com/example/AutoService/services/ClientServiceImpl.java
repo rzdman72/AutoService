@@ -26,17 +26,18 @@ public class ClientServiceImpl implements ClientService{
 
     @Override
     @Transactional(readOnly = true)
-    public Optional<Client> getClientById(long id) {
-        return clientRepository.findById(id);
-    }
+    public Optional<Client> getClientById(long id) { return clientRepository.findById(id); }
+
     @Override
     @Transactional
     public Client createClient(Client client) {
         return clientRepository.save(client);
     }
+
     @Override
     @Transactional
     public void updateClient(Client client) { clientRepository.save(client); }
+
     @Override
     @Transactional
     public void deleteClient(Client client) { clientRepository.delete(client); }
