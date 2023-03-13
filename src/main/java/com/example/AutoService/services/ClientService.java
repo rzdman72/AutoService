@@ -8,5 +8,9 @@ import java.util.Optional;
 public interface ClientService {
     List<Client> getAllClients();
 
-    Optional<Client> getClientById (long id);
+    Optional<Client> getClientById(long id);
+
+    Client createClient(Client client);
+    void updateClient(Client client);
+    void deleteClient(Client client);
 }
