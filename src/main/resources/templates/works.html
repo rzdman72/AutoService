@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Works</title>
+</head>
+<body>
+
+    <p th:text="'Works ' + ${works.size()}">Works _</p>
+
+    <tr th:each="works : ${works}">
+        <td th:text="${works.getId()}"></td>
+        <td th:text="${works.getName()}"></td>
+    </tr>
+
+</body>
+</html>

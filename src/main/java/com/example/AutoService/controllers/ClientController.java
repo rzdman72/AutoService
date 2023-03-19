@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
@@ -16,15 +17,18 @@ public class ClientController {
     @Autowired
     public ClientController(ClientService clientService) { this.clientService = clientService; }
 
-    @GetMapping("/hello")
-    public String helloPage(Model model) {;
-        return "hello";
-    }
     @GetMapping("/clients")
-    public String clientPage(Model model) {
+    public String clientsPage(Model model) {
         List<Client> clientList = clientService.getAllClients();
         model.addAttribute( "clients", clientList);
         return "clients";
+    }
+
+    @GetMapping("/cbi")
+    public String getClientByIdPage(@RequestParam long id, Model model) {
+        Client client = clientService.getClientById(id).get();
+        model.addAttribute("client", client);
+        return "client";
     }
 }
 
